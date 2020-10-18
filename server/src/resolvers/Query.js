@@ -9,7 +9,7 @@ async function feed(parent, args, context) {
       },
     })
     .aggregate()
-    .count()
+    .count();
   const links = await context.prisma.links({
     where: {
       OR: [
@@ -20,7 +20,7 @@ async function feed(parent, args, context) {
     skip: args.skip,
     first: args.first,
     orderBy: args.orderBy,
-  })
+  });
   return {
     count,
     links,
@@ -29,4 +29,4 @@ async function feed(parent, args, context) {
 
 module.exports = {
   feed,
-}
+};
